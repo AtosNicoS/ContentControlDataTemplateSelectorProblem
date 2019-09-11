@@ -1,0 +1,60 @@
+﻿<Page
+    x:Class="ContentControlDataTemplateSelectorProblem.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ContentControlDataTemplateSelectorProblem"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical">
+            <Button Content="A1" Click="{x:Bind ViewModel.SetA1}"/>
+            <Button Content="A2" Click="{x:Bind ViewModel.SetA2}"/>
+            <Button Content="B1" Click="{x:Bind ViewModel.SetB1}"/>
+            <Button Content="B2" Click="{x:Bind ViewModel.SetB2}"/>
+            <CheckBox IsChecked="{x:Bind ViewModel.TestBoolean, Mode=TwoWay}"/>
+            <CheckBox IsChecked="{x:Bind ViewModel.TestBoolean, Mode=TwoWay}"/>
+        </StackPanel>
+
+        <ContentControl Grid.Column="1" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch"
+                        Content="{x:Bind ViewModel.Element, Mode=OneWay}">
+            <ContentControl.ContentTemplateSelector>
+                <local:ElementDataTemplateSelector>
+                    <local:ElementDataTemplateSelector.ElementADataTemplate>
+                        <DataTemplate x:DataType="local:ElementA">
+                            <Grid>
+                                <StackPanel Orientation="Vertical">
+                                    <TextBlock Text="{x:Bind Text, Mode=OneTime}"/>
+                                    <local:MyUserControlA DataContext="{x:Bind MyUserControlAViewModel, Mode=OneTime}"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </local:ElementDataTemplateSelector.ElementADataTemplate>
+
+                    <local:ElementDataTemplateSelector.ElementBDataTemplate>
+                        <DataTemplate x:DataType="local:ElementB">
+                            <Grid>
+                                <ToggleSwitch IsOn="{x:Bind TestBoolean, Mode=OneTime}" IsEnabled="False"/>
+                            </Grid>
+                        </DataTemplate>
+                    </local:ElementDataTemplateSelector.ElementBDataTemplate>
+
+                    <local:ElementDataTemplateSelector.EmptyDataTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <TextBlock Text="Select an element from the left side."/>
+                            </Grid>
+                        </DataTemplate>
+                    </local:ElementDataTemplateSelector.EmptyDataTemplate>
+                </local:ElementDataTemplateSelector>
+            </ContentControl.ContentTemplateSelector>
+        </ContentControl>
+    </Grid>
+</Page>
