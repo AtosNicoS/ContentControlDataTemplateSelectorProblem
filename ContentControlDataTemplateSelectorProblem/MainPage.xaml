@@ -32,7 +32,7 @@
                             <Grid>
                                 <StackPanel Orientation="Vertical">
                                     <TextBlock Text="{x:Bind Text, Mode=OneTime}"/>
-                                    <local:MyUserControlA DataContext="{x:Bind MyUserControlAViewModel, Mode=OneTime}"/>
+                                    <local:MyUserControlA ViewModel="{x:Bind MyUserControlAViewModel, Mode=OneTime}"/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
