@@ -120,6 +120,10 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="BindableBase.cs" />
+    <Compile Include="ElementA.cs" />
+    <Compile Include="ElementB.cs" />
+    <Compile Include="ElementBase.cs" />
+    <Compile Include="ElementDataTemplateSelector.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
@@ -127,6 +131,7 @@
     <Compile Include="MyUserControlA.xaml.cs">
       <DependentUpon>MyUserControlA.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MyUserControlAViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
